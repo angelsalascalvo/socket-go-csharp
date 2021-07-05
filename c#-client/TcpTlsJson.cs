@@ -13,7 +13,6 @@ using NetworkConn;
     un certificado autofirmado.
 */
 class TcpTlsJson{
-    private static readonly string serverCertificateName = "Server";
     private static readonly string serverDirection = "127.0.0.1";
     private static readonly int serverPort = 2022;
     
@@ -23,14 +22,11 @@ class TcpTlsJson{
     * Establecer la comunicacion con el servidor
     */
     public void startClient(){
-        //Cargar el certificado
-        X509Certificate2 clientCertificate = new X509Certificate2("../certificates/cert.pfx", "12345");
-        X509CertificateCollection clientCertificateCollection = new X509CertificateCollection(new X509Certificate[] { clientCertificate });
         
         //Establecer la conexion TCP con el servidor con el certificado digital
         TcpClient client = new TcpClient(serverDirection, serverPort);
         SslStream sslStream = new SslStream(client.GetStream(), false, ValidateServerCertificate); //Crear flujo comunicacion segura
-        sslStream.AuthenticateAsClient(serverCertificateName, clientCertificateCollection, SslProtocols.Tls12, false); // Autenticarse con el servidor bajo el protocolo TLS1.2
+        sslStream.AuthenticateAsClient(serverDirection); // Autenticarse con el servidor bajo el protocolo TLS1.2
         
         if(sslStream.IsAuthenticated){
             Console.WriteLine("✅ Conectado al servidor");
