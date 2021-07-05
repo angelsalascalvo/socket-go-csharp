@@ -14,6 +14,14 @@ En el proyecto encontramos 3 directorios diferentes:
 
 - **C#-Client**: Proyecto C Sharp con los diferentes ejemplos sobre la funcionalidad de cliente.
 - **Go-Server**: Proyecto Go Lang con los diferentes ejemplos sobre la funcionalidad de servidor.
-- **Certificates**: Contiene la clave privada, publica y certificados (autofirmados) utilizados a modo de prueba para la implementación de TLS en los ejemplos.
+- **Certificates**: Contiene la clave privada, certificado (autofirmado) utilizados a modo de prueba para la implementación de TLS en los ejemplos.
 
 >  *(Para el uso del protocolo de seguridad TLS dentro de un entorno real es necesario emplear un certificado firmado por una Autoridad de Certificación AC)*
+<br>
+
+## Ejecución
+Para el correcto funcionamiento debemos asegurarnos de ejecutar tanto en el cliente como en el servidor el codigo correspondiente al mismo ejemplo. La ejecucion de un ejemplo u otro se establecerá desde la función principal u origen de estos (`main.go` `Program.cs`)
+<br><br>
+Para lanzar la propia ejecución se utilizarán los siguientes comandos de consola:
+- Go `go run .\main.go`
+- C# `dotnet run`
